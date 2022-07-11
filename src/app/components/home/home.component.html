@@ -1,0 +1,255 @@
+<div id="layoutDefault">
+
+  <div class="drop1">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-1 "
+      style="width:100%;height:60px;position:sticky;top:0; justify-content:space-between; padding:10px 30px 10px 10px;">
+      <a class="navbar-brand" href="" style="color: white; margin-left:10px; ">
+        <h1 style="font-size: large;">Weather App</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div ngbDropdown class="dropdown" style="margin-right:3rem;font-size: medium; ">
+        <button class="btn " type="button" style="font-size:15px; color:white; box-shadow:none;" data-toggle="dropdown"
+          ngbDropdownToggle>
+          {{user}} <i style="color:white; " class="fa-solid fa-user"></i>
+        </button>
+        <div ngbDropdownMenu class="dropdown-menu dropdown-menu1" aria-labelledby="dropdownMenu">
+          <a routerLink="/header" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block">
+            <h5 style="display: inline">Subscriptions</h5>
+          </a>
+          <a routerLink="/profile" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block">
+            <h5 style="display: inline">Manage Profile</h5>
+          </a>
+          <a routerLink="/about" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block">
+            <h5 style="display: inline">About</h5>
+          </a>
+          <a routerLink="/login" class="dropdown-items" style=" text-decoration:none; font-size:20px;   display:block">
+            <h5 style="display: inline" (click)="logout()">{{login}}</h5>&#160; <i
+              class="fa-solid fa-arrow-right-to-bracket dropdown-icons"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section style="display: flex;flex-direction:column;justify-content:center; ">
+    <div class="input-group" style="width: 45rem;margin:3rem auto;padding:1rem; ">
+      <input type="search" #userInput class="form-control rounded" style="width: 20rem;" placeholder="Enter Location..."
+        aria-label="Search" aria-describedby="search-addon" />
+      <button type="button" class="btn" style="background-color: #225090; color:white; border-radius:5px"
+        (click)="getCity(userInput.value)">search</button>
+    </div>
+
+    <ngb-carousel #carousel [interval]="2000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+      (slide)="onSlide($event)">
+      <ng-template ngbSlide *ngFor="let img of images; index as i">
+        <div class="picsum-img-wrapper">
+          <img style="width:100%; height:80vh" class="d-block w-100" src="assets/images/{{i+2}}.jpeg"
+            alt="{{i+2}} slide">
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+  </section>
+  <section class="abc">
+    <div class="col-xl-6 col-lg-12 col-sm-12" style="width:40%; margin-top:5rem;padding-bottom: 5rem">
+      <div class="card overflow-hidden">
+        <div class="card-content">
+          <div class="card-img">
+            <img src="/assets/images/sunny-weather.jpg" alt="image cap"
+              class="card-img-top img-fluid height-300 weather-pic">
+            <div class="card-img-overlay overlay-dark">
+              <h4 class="card-title"> {{weather.name}},{{weather.sys.country}}</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="weather-cards">
+              <div class="col text-center" *ngFor="let day of dailyForecast| slice:0:6;">
+                <span class="d-block">
+                  {{day.dt*1000|date: 'EEE '}}
+                </span>
+                <!-- <i class="fas fa-cloud-rain d-block secondary lighten-1 font-large-1 my-3"></i> -->
+                <i class="fas d-block secondary lighten-1 font-large-1 my-3"
+                  [ngClass]="{'fa-cloud-rain':day.weather[0].main==='Rain','fa-cloud':day.weather[0].main==='Clouds','fa-snowflake':day.weather[0].main==='Snow','fa-sun':day.weather[0].main==='Clear','fa-cloud-bolt':day.weather[0].main==='Thunderstorm','fa-cloud-hail-mixed':day.weather[0].main==='Shower rain'}"></i>
+                <span class="d-block">
+                  {{day.temp.day}} °C
+                </span>
+                <span class="d-block">
+                  {{day.weather[0].main}}
+                </span>
+                <!-- <p>sunrise : 05.30 am</p>
+                <p>sunrise : 05.30 am</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-12 card" id="table-scroll" style="width:35rem;">
+      <div class="head">
+        <h1 style="color:#225090; text-align:center">Hourly Forecast</h1>
+      </div>
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col" style="color:#225090 ;padding:16px;">#</th>
+            <th scope="col" style="color:#225090; padding:16px">Hour</th>
+            <th scope="col" style="color:#225090; padding:16px">Temperature</th>
+            <th scope="col" style="color:#225090; padding:16px">Pressure</th>
+            <th scope="col" style="color:#225090; padding:16px;max-width:100%;
+                      white-space:nowrap;">Feels Like</th>
+            <th scope="col" style="color:#225090; padding:16px">Humidity</th>
+            <th scope="col" style="color:#225090; padding:16px;max-width:100%;
+                      white-space:nowrap;">Wind Speed</th>
+            <th scope="col" style="color:#225090; padding:16px">Description</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let card of hourlyData| slice:0:24; let i = index" [attr.data-index]="i">
+          <tr>
+            <th style="color:#225090" scope="row">{{i+1}}</th>
+            <td style="max-width:100%;
+            white-space:nowrap;">{{card.dt}}</td>
+            <td>{{card.temp}} °C</td>
+            <td>{{card.pressure}} hpa</td>
+            <td>{{card.feels_like}} °C</td>
+            <td>{{card.humidity}} </td>
+            <td>{{card.wind_speed}} meter/sec</td>
+            <td>{{card.weather[0].main}} <i class="fas " style="color:#A5ACC2"
+                [ngClass]="{'fa-cloud-rain':card.weather[0].main==='Rain','fa-cloud':card.weather[0].main==='Clouds','fa-snowflake':card.weather[0].main==='Snow','fa-sun':card.weather[0].main==='Clear','fa-cloud-bolt':card.weather[0].main==='Thunderstorm','fa-cloud-hail-mixed':card.weather[0].main==='Shower rain'}"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section class="feature-cards">
+    <div class="row match-height">
+      <div class="col-md-4 col-12" *ngFor="let day of dailyForecast| slice:0:3;">
+        <div class=" data-card">
+          <div class="data-card-header text-center2 pb-0">
+            <span class="font-medium-2 info"> <h2>{{day.dt*1000|date: 'EEE '}}</h2></span>
+            <h3 class="font-large-2 mt-2">{{day.temp.day}} °C</h3>
+            <!-- <span class="font-medium-1 grey text-bold-400">temp</span> -->
+          </div>
+          <div class="card-content data-cards">
+
+            <img src="/assets/weather-animations/fog.gif" alt="clear">
+
+            <div class="data-card-body text-center2">
+
+              <span class="font-medium-1">
+                <h4> Sunrise : {{day.sunrise}} AM</h4>
+              </span>
+              <span class="font-medium-1">
+                <h4> Sunset : {{day.sunset}} PM</h4>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <div class="bg-1" style="padding:80px ; margin-bottom:0;border-bottom:0">
+
+    <div style="display: flex; justify-content:space-evenly">
+      <div class="sub-card mb-4 box-shadow">
+        <div class="card-header" style="background-color: #c5c5c5;">
+          <h4 class="my-0 font-weight-normal">Hourly</h4>
+        </div>
+        <div class="card-body" style="text-align: center">
+          <h1>Hourly</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Hourly notifications</li>
+            <li>Choose a city</li>
+            <li>Email support</li>
+            <li>Help center access</li>
+          </ul>
+          <a href="/register">
+            <button type="button"  class="btn btn-lg btn-block btn-outline-warning">Sign up for free</button>
+          </a>
+        </div>
+      </div>
+      <div class="sub-card mb-4 box-shadow">
+        <div class="card-header" style="background-color: #c5c5c5;">
+          <h4 class="my-0 font-weight-normal">Pro</h4>
+        </div>
+        <div class="card-body" style="text-align: center">
+          <h1>Daily </h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Daily notifications</li>
+            <li>Choose a city</li>
+            <li>Priority email support</li>
+            <li>Help center access</li>
+          </ul>
+          <a href="/register">
+            <button type="button"  class="btn btn-lg btn-block btn-outline-warning">Sign up for free</button>
+          </a>
+        </div>
+      </div>
+      <div class="sub-card mb-4 box-shadow">
+        <div class="card-header" style="background-color: #c5c5c5;">
+          <h4 class="my-0 font-weight-normal">Enterprise</h4>
+        </div>
+        <div class="card-body" style="text-align: center">
+          <h1>Weekly</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Weekly notifications</li>
+            <li>Choose a city</li>
+            <li>Phone and email support</li>
+            <li>Help center access</li>
+          </ul>
+          <a href="/register">
+          <button type="button"  class="btn btn-lg btn-block btn-outline-warning">Sign up for free</button>
+        </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="pt-4 my-md-5 pt-md-5 footer" style="margin:0;border:0">
+  <div class="row">
+    <div class="col-12 col-md">
+      © 2022
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Weekly Alerts</a></li>
+        <li><a class="text-muted" href="#">Daily Alerts</a></li>
+        <li><a class="text-muted" href="#">Hourly Alerts</a></li>
+        <li><a class="text-muted" href="#">Accurate Weather</a></li>
+        <li><a class="text-muted" href="#">Alerts</a></li>
+        <li><a class="text-muted" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Resource</a></li>
+        <li><a class="text-muted" href="#">Resource name</a></li>
+        <li><a class="text-muted" href="#">Another resource</a></li>
+        <li><a class="text-muted" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Team</a></li>
+        <li><a class="text-muted" href="#">Locations</a></li>
+        <li><a class="text-muted" href="#">Privacy</a></li>
+        <li><a class="text-muted" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

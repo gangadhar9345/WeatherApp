@@ -1,0 +1,134 @@
+<div class="container-fluid">
+
+  <div class="container-login100" style="padding-top: 0px;">
+
+
+    <div *ngIf="showRegistration" class="row mt-2">
+      <div class="col-xl-12 col-lg-12 col-12" style="padding-left: 90px;padding-right: 90px;">
+        <form class="login100-form validate-form flex-sb flex-w" #signUpForm="ngForm" (ngSubmit)="register(signUpForm)">
+          <div class="container-login100-form-btn m-t-17 p-b-5" style="border-bottom: 2px solid black">
+            <button class="login100-form-btn  fs-23 gradient-king-yna" style="font-family: 'Josefin Sans', sans-serif">
+              Register
+            </button>
+
+
+          </div>
+
+
+          <div class="p-t-2 p-b-2">
+            <span class="txt1"> Email ID </span>
+          </div>
+          <div [ngClass]="{
+              'alert-validate': username.errors?.required && username.touched
+            }" class="wrap-input100 validate-input" data-validate="Email Id is required">
+            <input class="input100" type="email" name="username" id="username" email [(ngModel)]="newUser.email" required
+              #username="ngModel" />
+
+            <span class="focus-input100"></span>
+          </div>
+
+          <span class="help-block alert100-form-title" *ngIf="username.errors?.email && username.touched">
+            Email Id is invalid
+          </span>
+
+          <span class="help-block alert100-form-title" *ngIf="userAlreadyRegistered">
+            This Email ID is already associated with another user
+          </span>
+
+          <div class="p-t-2 p-b-2">
+            <span class="txt1"> Password </span>
+          </div>
+          <div [ngClass]="{
+            'alert-validate': password.errors?.required && password.touched
+          }" class="wrap-input100 validate-input" data-validate="Password is required">
+            <input class="input100" type="password" name="password" id="password" [(ngModel)]="newUser.password" required
+              #password="ngModel" />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="p-t-2 p-b-2">
+            <span class="txt1"> Full Name </span>
+          </div>
+          <div [ngClass]="{
+            'alert-validate': (fullName.errors?.pattern || fullName.errors?.required) && fullName.touched
+          }" class="wrap-input100 validate-input" data-validate="Full Name is required and must contain only letters">
+            <input class="input100" name="fullName" id="fullName" [(ngModel)]="newUser.name" required
+              #fullName="ngModel" pattern="^[a-zA-Z]+$" />
+            <span class="focus-input100"></span>
+          </div>
+
+
+          <div class="container-login100-form-btn m-t-17">
+            <button class="login100-form-btn" [ngClass]="{ 'login100-form-btn-disabled': signUpForm.invalid }"
+              [disabled]="signUpForm.invalid" [hidden]="loading">
+              Submit
+            </button>
+          </div>
+
+          <div *ngIf="loading" class="spinner-border m-t-10" role="status" style="margin: auto;">
+            <span class="sr-only">Loading...</span>
+          </div>
+
+
+          <div class="w-full text-center p-t-10">
+            <a (click)="signUpForm.reset()" style="
+                font-family: 'Josefin Sans', sans-serif;
+    
+                padding-left: 15px;
+                color: white;
+                margin-right:10px
+              " class=" gradient-ibiza-sunset btn rounded-pill px-4 ml-lg-4 btn-marketing">
+              <i class="fa fa-times-circle"></i>
+              Clear
+            </a>
+          
+          
+            <a routerLink="" style="
+            font-family: 'Josefin Sans', sans-serif;
+            background-color:#28a745;
+            padding-left: 15px;
+          " class="btn-teal btn rounded-pill px-4 ml-lg-4 btn-marketing">
+              <i class="fa fa-times-circle"></i>
+              back
+            </a>
+          </div>
+
+        </form>
+
+        <div *ngIf="isEr" class="alert alert-danger m-t-10" role="alert">
+          <h4>Error Messages</h4>
+          <hr>
+          <p>{{erMsg}}</p>
+
+        </div>
+
+        <div *ngIf="isDone" class="alert alert-success m-t-10" role="alert">
+          <h4 class="alert-heading">Well done!</h4>
+          <p>User Registered successfully, Click Back and Login</p>
+          <hr>
+
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!showRegistration">
+      
+
+
+      <div style="margin-top: 10px;padding-top: 10px;" class="center text-center">
+        <a style="
+            font-family: 'Josefin Sans', sans-serif;
+            background-color:#28a745;
+            padding-left: 15px;
+            
+          " (click)="showRegistrationPage()" class="btn-teal btn rounded-pill px-4 ml-lg-4 btn-marketing">
+          <i class="fa fa-times-circle"></i>
+          Cancel
+        </a>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.addSubscription{
+  position: sticky;
+  /* margin-left:30%; */
+  width:100%;
+  height: 31vh;
+  bottom: 0;
+  background-image: linear-gradient(
+    45deg
+    ,#226cc5,#6cd975);
+  /* padding: 3rem; */
+  /* text-align: center; */
+}
+
+.bg-1{
+  background-image: linear-gradient(
+45deg
+,#226cc5,#6cd975);
+}
+
+.select_dd{
+  color:white;
+  /* width:fit-content; */
+  /* position: absolute; */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar-brand{
+  /* font-family: "ubuntu"; */
+  margin-left: 11%;
+  font-size: 2.5rem;
+  /* font-weight: bold; */
+}
+
+.dropdown-items:hover{
+
+  background-color: #225090;
+  color:white;
+}
+
+.dropdown-items{
+  padding: 5px;
+  color: #225090;
+}

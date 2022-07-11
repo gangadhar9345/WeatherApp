@@ -1,0 +1,146 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-1 "style="width:100%;height:60px;position:sticky;top:0; justify-content:space-between; padding:10px 30px 10px 10px;">
+        <a class="navbar-brand" href="" style="color: white; margin-left:10px; "><h1 style="font-size: large;">Weather App</h1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div ngbDropdown class="dropdown" style="margin-right:3rem;font-size: medium; ">
+          <button class="btn " type="button"  style="font-size:15px; color:white; box-shadow:none;" data-toggle="dropdown" ngbDropdownToggle  >
+               {{user}} <i style="color:white; " class="fa-solid fa-user"></i>
+              </button>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu1"   aria-labelledby="dropdownMenu">
+                <a routerLink="/header" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block" ><h5 style="display: inline">Subscriptions</h5> 
+                </a>  
+              <a routerLink="/profile" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block" ><h5 style="display: inline">Manage Profile</h5> 
+              </a>    
+              <a routerLink="/about" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block" ><h5 style="display: inline">About</h5> 
+              </a>
+              <a routerLink="/login" class="dropdown-items" style=" text-decoration:none; font-size:20px;   display:block"
+               ><h5 style="display: inline" (click)="logout()">{{login}}</h5>&#160; <i class="fa-solid fa-arrow-right-to-bracket dropdown-icons" ></i>
+              </a>
+            </div>
+          </div>
+      
+      </nav>
+
+
+        <section id="title">
+      
+          <!-- Nav Bar -->
+      
+          <nav class="navbar navbar-expand-lg navbar-dark ">
+            <a class="navbar-brand" href="">Weather App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+          </nav>
+      
+      
+          <!-- Title -->
+          <div class="row title">
+            <div class="col-lg-6">
+              <h1>One click Subscription</h1>
+              <h4>Select a city anywhere in the world</h4>
+              <h4>Email notifications based on your subscription</h4>
+              <button type="button"  class="btn btn-dark btn-lg"> Get Started</button>
+            
+            </div>
+            <div class="col-lg-6">
+              <!-- <img class="image " src="images/backimage.jpg" alt="iphone-mockup"> -->
+            </div>
+          </div>
+        </section>
+      
+      
+        <!-- Features -->
+      
+        <section id="features">
+      
+          <div class="row">
+      
+            <div class=" feature-item col-lg-4 ">
+              <i class="fas fa-check-circle fa-2x " style="color:#225090"></i>
+              <h3>Easy to use.</h3>
+              <p>Anyone can use application</p>
+            </div>
+      
+            <div class="feature-item col-lg-4 ">
+              <i class="fas fa-bullseye fa-2x " style="color:#225090"></i>
+              <h3>One click Subscription</h3>
+              <p>Hourly, Daily, weekly</p>
+            </div>
+      
+            <div class="feature-item col-lg-4 ">
+              <i class="fas fa-heart fa-2x" style="color:#225090"></i>
+              <h3>Email Notifications</h3>
+              <p>Get email notifications on subscription</p>
+            </div>
+      
+          </div>
+      
+        </section>
+      
+      
+      
+        <section id="subscription" >
+      
+          <h2 style="color:white">A Plan for Every ones Needs</h2>
+          <p>Simple and best plans for your needs</p>
+      
+          <div class="row">
+      
+      
+            <div class="card mb-3 col-lg-3 " style="width:18rem">
+              <div class="card-header">
+                <h3 >Hourly</h3>
+              </div>
+              <div class="card-body">
+      
+                <p>Hourly Email Notifictions</p>
+                <p>Choose a City</p>
+                <button type="button"  class="btn btn-dark">Sign Up</button>
+              </div>
+            </div>
+      
+            <div class="card mb-3 col-lg-3" style="width:18rem">
+              <div class="card-header">
+                <h3>Daily</h3>
+              </div>
+              <div class="card-body">
+      
+                <p>Daily Email Notifictions</p>
+                <p>Choose a City</p>
+              <button type="button"  class="btn btn-dark">Sign Up</button>
+              </div>
+            </div>
+      
+            <div class="card mb-3 col-lg-3 " style="width:18rem">
+              <div class="card-header">
+                <h3>Weekly</h3>
+              </div>
+              <div class="card-body">
+      
+                <p>Email notifications</p>
+                  <p>Choose a City</p>
+      
+                  <button type="button"  class="btn btn-dark">Sign Up</button>
+              </div>
+            </div>
+      
+          </div>
+      
+        </section>
+      
+      
+      
+      
+        <footer id="footer">
+      
+          <p>© Copyright 2022 Weather App</p>
+      
+        </footer>
+      
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      </body>

@@ -1,0 +1,70 @@
+<div class="container-fluid">
+
+
+    <div class="container-login100">
+      <div
+        class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+        <form class="login100-form validate-form flex-sb flex-w" #loginForm="ngForm" (ngSubmit)="login()">
+          <div class="container-login100-form-btn m-t-17 p-b-53" style="border-bottom: 2px solid black">
+            <button class="login100-form-btn header fs-23 gradient-king-yna">
+              Sign In With
+            </button>
+          </div>
+  
+          <div class="p-t-31 p-b-9">
+            <span class="txt1"> Username: </span>
+          </div>
+          <div [ngClass]="{
+                'alert-validate': username.errors?.required  && username.touched
+              }" class="wrap-input100 validate-input" data-validate="Username is required">
+            <input email class="input100" type="text" name="username" id="username" [(ngModel)]="loginUser.email" required
+              #username="ngModel" />
+  
+            <span class="focus-input100"></span>
+          </div>
+  
+  
+  
+          <div class="p-t-13 p-b-9">
+            <span class="txt1"> Password: </span>
+  
+  
+          </div>
+          <div [ngClass]="{
+                'alert-validate': password.invalid && password.touched
+              }" class="wrap-input100 validate-input" data-validate="Password is required">
+            <input class="input100" type="password" name="current-password" id="password" [(ngModel)]="loginUser.password"
+              required current-password #password="ngModel" />
+            <span class="focus-input100"></span>
+          </div>
+  
+          <div class="container-login100-form-btn m-t-17">
+            <button class="login100-form-btn" style="font-family: 'Josefin Sans', sans-serif" (click)="login()">
+              Sign In
+            </button>
+          </div>
+  
+  
+  
+          <span style="text-align: center" class="help-block alert100-form-title" *ngIf="authentication">
+            Invalid Username and Password
+          </span>
+  
+  
+  
+          <div class="w-full text-center p-t-55">
+            <a routerLink="/" class="btn-teal btn rounded-pill px-4 ml-lg-4 btn-marketing"
+              style="font-family: 'Josefin Sans', sans-serif">
+              <i class="fa fa-times-circle"></i>
+              Close
+            </a>
+            <a routerLink="/register" class="btn-teal btn rounded-pill px-4 ml-lg-4 btn-marketing"
+            style="font-family: 'Josefin Sans', sans-serif">
+            <i class="fa fa-times-circle"></i>
+            Signup
+          </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

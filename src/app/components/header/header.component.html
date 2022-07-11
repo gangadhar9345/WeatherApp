@@ -1,0 +1,120 @@
+
+
+   
+
+<body >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-1 "style="width:100%;height:60px;position:sticky;top:0; justify-content:space-between; padding:10px 30px 10px 10px;">
+        <a class="navbar-brand" href="" style="color: white; margin-left:10px; "><h1 style="font-size: large;">Weather App</h1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div ngbDropdown class="dropdown" style="margin-right:3rem;font-size: medium; ">
+          <button class="btn " type="button"  style="font-size:15px; color:white; box-shadow:none;" data-toggle="dropdown" ngbDropdownToggle  >
+               {{user}} <i style="color:white; " class="fa-solid fa-user"></i>
+              </button>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu1"   aria-labelledby="dropdownMenu">
+                <a routerLink="/header" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block" ><h5 style="display: inline">Subscriptions</h5> 
+                </a>  
+              <a routerLink="/profile" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block" ><h5 style="display: inline">Manage Profile</h5> 
+              </a>    
+              <a routerLink="/about" class="dropdown-items" style=" text-decoration:none; font-size:20px;  display:block" ><h5 style="display: inline">About</h5> 
+              </a>
+              <a routerLink="/login" class="dropdown-items" style=" text-decoration:none; font-size:20px;   display:block"
+               ><h5 style="display: inline" (click)="logout()">{{login}}</h5>&#160; <i class="fa-solid fa-arrow-right-to-bracket dropdown-icons" ></i>
+              </a>
+            </div>
+          </div>
+      
+      </nav>
+  <!-- <div style="display: flex; "> -->
+    
+
+      <h1 style="text-align: center; padding:20px 0 ;color:#225090">Your Subscriptions</h1>
+    <!-- </div> -->
+<!-- <div style="height: 100vh"> -->
+  
+  <div style="overflow: auto; height:69vh;">
+    
+    <table class="table" >
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="color: #225090">City</th>
+          <th style="color: #225090">Country</th>
+          <th style="color: #225090"> Frequency</th>
+          <th style="color: #225090"> Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let notification of notifications; let i = index" [attr.data-index]="i">
+        <tr>
+            <th style="color:#225090"  scope="row">{{i+1}}</th>
+          <td  >{{notification.city}}</td>
+          <td >{{notification.country}}</td>
+          <td >{{notification.frequent}}</td>
+          <td > <button class="btn btn-warning"  (click)="deleteSubscription(notification.city)"> <i class="fa-solid fa-trash-can"></i> Delete </button></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  
+  <section class="addSubscription" >
+     
+    <h1 style="text-align: center; color: white">Add Subscription Details</h1>
+  <!-- <footer class="container"> -->
+    <!-- <div></div> -->
+      <div class=" select_dd" >
+          <div  style="margin:10px">
+          <label for="country" style="color: white">Country</label> <br/>
+          <select style="width:8rem" id="country" #country [(ngModel)]="subscription.country" (change)="getCountryOfCities(country.value)"
+            [ngModelOptions]="{ standalone: true }">
+      
+            <option *ngFor="let country of countries;let i = index">
+              {{ country.name }}
+            </option>
+          </select>
+        </div>
+      
+     
+        <div style="margin:10px">
+      
+          <label for="city" style="color: white">City</label><br/>
+          <select id="city" style="width:8rem"  #city [(ngModel)]="subscription.city" [ngModelOptions]="{ standalone: true }">
+            <option *ngFor="let city of cities">
+              {{ city }}
+            </option>
+          </select>
+        </div>
+      
+        
+        <div  style="margin:10px"> 
+      
+          <label for="frequent" style="color: white">Frequent</label>
+          <div>
+          <select id="frequent" style="width:8rem" name="frequent" #frequent [(ngModel)]="subscription.frequent" [ngModelOptions]="{ standalone: true }">Select
+            <option >
+              Hourly
+            </option>
+            <option >
+              Daily
+            </option>
+            <option >
+              Weekly
+            </option>
+          </select>
+        </div>
+          <br/>
+          
+        </div>
+        
+      </div>
+      <div style="text-align: center">
+      <button class="btn btn-dark btn-lg"  (click)="addSubscription()">
+          Submit
+        </button>
+      </div>  
+      <!-- </footer> -->
+
+</section>
+</body>
+<!-- </div> -->

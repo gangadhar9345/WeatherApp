@@ -1,0 +1,127 @@
+h1{
+    font-family: "Montserrat-Black";
+    font-weight: bold;
+    color: #fff;
+    font-size: 3rem;
+  }
+  h2{
+    font-family: "Montserrat-Bold";
+    font-size: 2.5rem;
+    line-height: 1.5;
+  
+  }
+  
+  h3{
+    font-family: 'Montserrat-Bold', sans-serif;
+    font-weight: bold;
+  }
+  p{
+    color: #8f8f8f;
+  }
+  
+  #title{
+    /* background-color: #ff4c68; */
+    margin-top:8rem;
+    background-image: url(../../../assets/images/5.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding:20px;
+  }
+  
+  .nav-item{
+    margin-right: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .navbar{
+    padding-top:2rem;
+    padding-bottom: 3rem;
+  }
+  .navbar-nav{
+    margin-left: 65%;
+  
+  
+  }
+  .navbar-brand{
+    font-family: "ubuntu";
+    margin-left: 11%;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  .title{
+    margin-left: 10%;
+  }
+  .nav-link{
+    font-size: 1rem;
+    font-weight: lighter;
+  }
+  
+  /* download buttons */
+  .btn{
+    margin:10px;
+  }
+  
+  #features{
+    padding:7% 15%;
+  }
+  
+  .feature-item{
+  text-align: center;
+  font-weight: bolder;
+  }
+  
+  .card{
+    text-align: center;
+    margin-right: 10px;
+    width: 30%;
+    box-shadow: 2px 2px #c5c5c5;
+  }
+  
+  .card:hover{
+    transform:scale(1.02);
+    cursor:pointer;
+  }
+  
+  /* cta */
+  #cta{
+    padding: 7% 15%;
+    font-family: "Montserrat-Black";
+    background-color:#ff4c68;
+    text-align: center;
+  }
+  
+  #subscription{
+    /* display: flex; */
+    justify-content: space-around;
+    background-color: #225090;
+    padding-bottom:  3%;
+    text-align: center;
+  }
+  
+  .row{
+    justify-content: space-evenly;
+  }
+  .row,.h4{
+    color:white;
+  }
+
+  .bg-1{
+    background-image: linear-gradient(
+  45deg
+  ,#226cc5,#6cd975);
+  }
+  
+  .dropdown-items:hover{
+
+    background-color: #225090;
+    color:white;
+  }
+  
+  .dropdown-items{
+    padding: 5px;
+    color: #225090;
+    visibility: visible;
+  }
+  .card,.h3{
+    color:#225090;
+  }
