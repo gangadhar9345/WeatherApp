@@ -1,0 +1,5 @@
+com\weatherapp\demo\model\Authentication.class
+com\weatherapp\demo\WeatherAppApplication$1.class
+com\weatherapp\demo\WeatherAppApplication.class
+com\weatherapp\demo\model\RestResponse.class
+com\weatherapp\demo\exception\APIRequestException.class

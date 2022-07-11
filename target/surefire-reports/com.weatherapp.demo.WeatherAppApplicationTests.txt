@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.weatherapp.demo.WeatherAppApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.906 s <<< FAILURE! - in com.weatherapp.demo.WeatherAppApplicationTests
+contextLoads  Time elapsed: 0.027 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mongoMappingContext' defined in class path resource [org/springframework/boot/autoconfigure/data/mongo/MongoDataConfiguration.class]: Invocation of init method failed; nested exception is java.lang.reflect.InaccessibleObjectException: Unable to make field private transient java.lang.Object java.lang.Throwable.backtrace accessible: module java.base does not "opens java.lang" to unnamed module @647e447
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private transient java.lang.Object java.lang.Throwable.backtrace accessible: module java.base does not "opens java.lang" to unnamed module @647e447
+
